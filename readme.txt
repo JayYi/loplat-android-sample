@@ -4,6 +4,7 @@
 2016.02.12 - 장소 정보에 client_code 추가
              동일 client_code를 가지는 장소 내에서의 이동시에 중복해서 ENTER Event를 발생하지 않도록 변경
              장소학습기 (loplat cook) 릴리즈
+             *주의* 이전 library와 db 호환이 되지 않아, 이전버전으로 만든 앱은 꼭 삭제 후 새 버전 설치
 
 2016.01.27 - initial release
 
