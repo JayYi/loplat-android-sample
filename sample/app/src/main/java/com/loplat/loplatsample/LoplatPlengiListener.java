@@ -31,11 +31,13 @@ public class LoplatPlengiListener implements PlengiListener {
             double lat = response.place.lat;    // detected place location (latitude)
             double lng = response.place.lng;    // detected place location (longitude)
             int floor = response.place.floor;   // detected place's floor info
+            String client_code = response.place.client_code;    // client_code
 
             float accuracy = response.place.accuracy;
             float threshold = response.place.threshold;
 
-            String placeinfo = name + ": " + tags + ", " + floor;
+            String placeinfo = name + ": " + tags + ", " + floor + ", " +
+                                String.format("%.3f", accuracy) + "/" + String.format("%.3f", threshold);
 
             if(accuracy > threshold) {
                 // device is within the detected place
@@ -48,6 +50,10 @@ public class LoplatPlengiListener implements PlengiListener {
                 // in case accuracy is 0.1, actual distance is 40~50M
             }
 
+            if(client_code != null) {
+                placeinfo += ", client_code: " + client_code;
+            }
+            
             sendLoplatResponseToApplication("placeinfo", placeinfo);
         }
         // get events (place enter or place leave)
@@ -58,7 +64,7 @@ public class LoplatPlengiListener implements PlengiListener {
             detail += event;
 
             if(event == PlengiResponse.PlaceEvent.ENTER) {
-                detail += " - " + response.place.name;
+                detail += " - " + response.place.name + ", client_code: " + response.place.client_code;
 
                 // start nearby session in case people enter to a place
                 // Plengi.getInstance(null).startNearbySession();

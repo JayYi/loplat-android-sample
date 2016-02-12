@@ -1,10 +1,23 @@
-2016.01.27
+== History == 
+
+
+2016.02.12 - 장소 정보에 client_code 추가
+             동일 client_code를 가지는 장소 내에서의 이동시에 중복해서 ENTER Event를 발생하지 않도록 변경
+             장소학습기 (loplat cook) 릴리즈
+
+2016.01.27 - initial release
+
+
+
+
+== Contents ==
 
 디렉토리 소개
 - /sample : 샘플코드
 - /library : plengi.aar 파일이 실제 라이브러리 파일 임
     		* jar 라이브러리가 필요한 경우 plengi.jar를 사용하고 AndroidManifest.xml 에 있는 권한을 추가
 - /doc : library 설명 문서
+- /place_registerer : 장소 학습기 안드로이드 앱
 
 
 샘플코드 간략 소개
