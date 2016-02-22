@@ -1,15 +1,11 @@
 package com.loplat.loplatsample;
 
-import android.accounts.Account;
-import android.accounts.AccountManager;
 import android.app.Application;
 import android.content.Context;
-import android.util.Patterns;
 
 import com.loplat.placeengine.Plengi;
 import com.loplat.placeengine.utils.LoplatLogger;
 
-import java.util.regex.Pattern;
 
 
 

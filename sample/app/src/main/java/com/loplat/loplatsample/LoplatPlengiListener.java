@@ -53,7 +53,7 @@ public class LoplatPlengiListener implements PlengiListener {
             if(client_code != null) {
                 placeinfo += ", client_code: " + client_code;
             }
-            
+
             sendLoplatResponseToApplication("placeinfo", placeinfo);
         }
         // get events (place enter or place leave)
@@ -64,7 +64,9 @@ public class LoplatPlengiListener implements PlengiListener {
             detail += event;
 
             if(event == PlengiResponse.PlaceEvent.ENTER) {
-                detail += " - " + response.place.name + ", client_code: " + response.place.client_code;
+                detail += " - " + response.place.name;
+                detail += " (" + response.place.floor + "F)";
+                detail += ", client_code: " + response.place.client_code;
 
                 // start nearby session in case people enter to a place
                 // Plengi.getInstance(null).startNearbySession();
@@ -74,7 +76,7 @@ public class LoplatPlengiListener implements PlengiListener {
                 // stop nearby session in case people leave from a place
                 // Plengi.getInstance(null).stopNearbySession();
             }
-
+            System.out.println(detail);
             sendLoplatResponseToApplication("placeevent", detail);
         }
         else if(response.type == PlengiResponse.ResponseType.NEARBY_DEVICE) {

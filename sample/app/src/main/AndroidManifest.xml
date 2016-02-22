@@ -3,6 +3,13 @@
     package="com.loplat.loplatsample" >
 
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name=".LoplatSampleApplication"
@@ -19,6 +26,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <receiver
+            android:name="com.loplat.placeengine.EventReceiver"
+            android:enabled="true"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.net.wifi.SCAN_RESULTS" />
+                <action android:name="android.net.wifi.WIFI_AP_STATE_CHANGED" />
+                <action android:name="com.loplat.placeengine.event.scanwifi" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name="com.loplat.placeengine.location.LocationMonitorService" />
+
     </application>
 
 </manifest>
